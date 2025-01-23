@@ -32,3 +32,17 @@ shape_meta: &shape_meta
 ```
 $ eval_real_robot_UR5.py --input=Models/epoch=0050-train_loss=0.013.ckpt --output=record -ri=172.16.11.101
 ```
+
+**3. train**
+`python train.py --config-name=train_diffusion_unet_real_UR5_image_workspace`
+
+continue from checkpoint
+- Modified `train.py`, add output_dir = ${Path_to_your_checkpont}
+```Python
+workspace: BaseWorkspace = cls(cfg)
+# for example: workspace: BaseWorkspace = cls(
+#   cfg, 
+#   output_dir="/home/cyn/document/diffusion_policy/data/outputs/2025.01.20/15.02.15_train_diffusion_unet_image_real_ur5_image")
+```
+- Modified workspace.yaml, for example `diffusion_policy/config/train_diffusion_unet_real_UR5_image_workspace.yaml`
+    - change run_dir of `multi_run`, dir of  `hydra.run` and `hydra.sweep` to exactly `${Path_to_your_checkpont}`, for example `/home/cyn/document/diffusion_policy/data/outputs/2025.01.20/15.02.15_train_diffusion_unet_image_real_ur5_image`
