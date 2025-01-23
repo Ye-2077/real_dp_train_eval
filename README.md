@@ -11,6 +11,11 @@ defaults:
   - task: real_ur5_image # change to your own task name
 ```
 
+- add dataset path in task_config.yaml
+```yaml
+dataset_path: data/demo_clean_wok
+```
+
 **ATTENTION**
 - Must include obs `Gripper_Pose` and set it in config file, if you want to use directly, like this
 
